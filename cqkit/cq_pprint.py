@@ -23,20 +23,22 @@
 #
 # CQ Object prettyish printer functions
 
-
-import cadquery as cq
-from cadquery import *
-
+try:
+    import cadquery as cq
+    from cadquery import *
+except ImportError:
+    import cadquery2 as cq
+    from cadquery2 import *
 try:
     from OCC.Core.gp import gp_Vec, gp_Pnt, gp_Dir, gp_XYZ
-except:
+except ImportError:
     from OCP.gp import gp_Vec, gp_Pnt, gp_Dir, gp_XYZ
 
 try:
     import crayons
 
     has_crayons = True
-except:
+except ImportError:
     has_crayons = False
 
 from .cq_files import better_float_str

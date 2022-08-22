@@ -12,7 +12,10 @@ except:
     from OCP.gp import gp_Vec, gp_Pnt, gp_Dir, gp_XYZ
 
 # my modules
-from cadquery import *
+try:
+    from cadquery import *
+except ImportError:
+    from cadquery2 import *
 from cqkit import *
 
 

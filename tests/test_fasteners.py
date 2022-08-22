@@ -2,7 +2,10 @@
 import pytest
 
 # my modules
-from cadquery import *
+try:
+    from cadquery import *
+except ImportError:
+    from cadquery2 import *
 from cqkit import *
 
 

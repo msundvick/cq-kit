@@ -29,8 +29,10 @@
 # This class is a derivative work with extra documentation.
 
 from math import radians, sin, cos, tan
-import cadquery as cq
-
+try:
+    import cadquery as cq
+except ImportError:
+    import cadquery2 as cq
 
 class Ribbon:
     """A class which generates an arbitrary closed wire path of constant width.

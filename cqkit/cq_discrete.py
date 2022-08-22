@@ -35,7 +35,7 @@ try:
     from OCC.Core.GCPnts import GCPnts_AbscissaPoint, GCPnts_QuasiUniformAbscissa
     from OCC.Core.gp import gp_Dir
 
-except:
+except ImportError:
     from OCP.BRep import BRep_Tool
     from OCP.BRepMesh import BRepMesh_IncrementalMesh
     from OCP.TopAbs import TopAbs_FACE, TopAbs_VERTEX, TopAbs_Orientation
@@ -50,8 +50,12 @@ except:
     BRep_Tool.Triangulation = BRep_Tool.Triangulation_s
     GCPnts_AbscissaPoint.Length = GCPnts_AbscissaPoint.Length_s
 
-import cadquery as cq
-from cadquery import *
+try:
+    import cadquery as cq
+    from cadquery import *
+except ImportError:
+    import cadquery2 as cq
+    from cadquery2 import *
 
 
 def discretize_edge(edge, resolution=16):

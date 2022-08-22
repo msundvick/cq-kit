@@ -27,8 +27,13 @@ import copy
 import sys
 from math import radians
 
-import cadquery as cq
-from cadquery import *
+try:
+    import cadquery as cq
+    from cadquery import *
+except ImportError:
+    import cadquery2 as cq
+    from cadquery2 import *
+
 from cqkit.cq_geometry import Point, Rect, Vector, edge_length, wire_length
 
 valid_objects = [

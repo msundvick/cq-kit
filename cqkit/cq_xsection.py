@@ -27,8 +27,13 @@ import copy
 import sys
 from math import radians
 
-import cadquery as cq
-from cadquery import *
+try:
+    import cadquery as cq
+    from cadquery import *
+except ImportError:
+    import cadquery2 as cq
+    from cadquery2 import *
+
 from cqkit.cq_geometry import Rect
 
 
@@ -72,7 +77,7 @@ class XSection(object):
     # half a triangle on XY plane
     xc = XSection([(0,0), (1,0), (0, 3)], "XY", symmetric=True, mirror_axis="Y")
     # get the outline object
-    r = xc.render()
+    r = xc.render()2
     # get an upside down outline object
     r = xc.render(flipped=True)
     # get an extruded version 2x taller:

@@ -31,8 +31,12 @@ from datetime import date, datetime, time
 from enum import Enum
 
 import pyparsing
-import cadquery as cq
-from cadquery.occ_impl.shapes import Shape
+try:
+    import cadquery as cq
+    from cadquery.occ_impl.shapes import Shape
+except ImportError:
+    import cadquery2 as cq
+    from cadquery2.occ_impl.shapes import Shape
 
 # Hacky way of determining whether we're using python-occ or OCP
 # under the hood. A better way of assigning OCCT_VERSION could
@@ -51,7 +55,7 @@ try:
     from OCC.Core.StlAPI import StlAPI_Writer
 
     OCCT_VERSION = "6.9"
-except:
+except ImportError:
     from OCP.STEPControl import (
         STEPControl_Writer,
         STEPControl_AsIs,

@@ -6,8 +6,12 @@ import os.path
 import pytest
 
 # my modules
-from cadquery import *
-from cadquery.selectors import *
+try:
+    from cadquery import *
+    from cadquery.selectors import *
+except ImportError:
+    from cadquery2 import *
+    from cadquery2.selectors import *
 from cqkit import *
 
 
